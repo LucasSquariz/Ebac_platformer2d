@@ -489,8 +489,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRigidBody2D: {fileID: 1930514470}
-  velocity: {x: 0, y: 0}
+  friction: {x: -0.1, y: 0}
   speed: 10
+  speedRun: 21
   jumpForce: 15
 --- !u!50 &1930514470
 Rigidbody2D:
