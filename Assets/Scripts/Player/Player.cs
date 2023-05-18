@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     [SerializeField, BoxGroup("Animation setup")] public float animationDuration = .3f;
     [SerializeField, BoxGroup("Animation setup")] public Ease ease = Ease.OutBack;
     [ShowNonSerializedField] private float _currentSpeed;
+    public string boolRun = "Run";
+    public Animator animator;
+    public float playerSwipeDuration = .1f;
 
 
     void Update()
@@ -30,21 +33,42 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             _currentSpeed = speedRun;
+            animator.speed = 2;
         }
         else
         {
             _currentSpeed = speed;
+            animator.speed = 1;
         }        
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             //myRigidBody2D.MovePosition(myRigidBody2D.position - velocity * Time.deltaTime);
+            animator.SetBool(boolRun, true);
+            
+            if(myRigidBody2D.transform.localScale.x != -1)
+            {
+                myRigidBody2D.transform.DOScaleX(-1, playerSwipeDuration);
+            }
+
             myRigidBody2D.velocity = new Vector2(-_currentSpeed, myRigidBody2D.velocity.y);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             // myRigidBody2D.MovePosition(myRigidBody2D.position + velocity * Time.deltaTime);
+            animator.SetBool(boolRun, true);
+
+            if (myRigidBody2D.transform.localScale.x != 1)
+            {
+                myRigidBody2D.transform.DOScaleX(1, playerSwipeDuration);
+            }
+
+            myRigidBody2D.transform.localScale = new Vector3(1, 1, 1);
             myRigidBody2D.velocity = new Vector2(_currentSpeed, myRigidBody2D.velocity.y);
+        }
+        else
+        {
+            animator.SetBool(boolRun, false);
         }
 
         if(myRigidBody2D.velocity.x > 0)
