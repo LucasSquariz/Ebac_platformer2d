@@ -6,7 +6,11 @@ using NaughtyAttributes;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField, BoxGroup("Speed setup")] public Rigidbody2D myRigidBody2D;
+    
+    public Rigidbody2D myRigidBody2D;
+    public Animator animator;
+    public HealthBase health;
+
     [SerializeField, BoxGroup("Speed setup")] public Vector2 friction = new Vector2(-.1f,0);
     [SerializeField, BoxGroup("Speed setup")] public float speed;
     [SerializeField, BoxGroup("Speed setup")] public float speedRun;
@@ -16,12 +20,26 @@ public class Player : MonoBehaviour
     [SerializeField, BoxGroup("Animation setup")] public float jumpScaleX = .7f;
     [SerializeField, BoxGroup("Animation setup")] public float animationDuration = .3f;
     [SerializeField, BoxGroup("Animation setup")] public Ease ease = Ease.OutBack;
+    [SerializeField, BoxGroup("Animation setup")] public float playerSwipeDuration = .1f;
+
     [ShowNonSerializedField] private float _currentSpeed;
-    public string boolRun = "Run";
-    public Animator animator;
-    public float playerSwipeDuration = .1f;
+    [ShowNonSerializedField] private string boolRun = "Run";
+    [ShowNonSerializedField] private string triggerOnDeath = "Death";
+    
 
+    private void Awake()
+    {
+        if(health != null)
+        {
+            health.OnKill += OnPlayerKill;
+        }
+    }
 
+    private void OnPlayerKill()
+    {
+        health.OnKill -= OnPlayerKill;
+        animator.SetTrigger(triggerOnDeath);
+    }
     void Update()
     {
         HandleJump();
@@ -97,5 +115,10 @@ public class Player : MonoBehaviour
     {
         myRigidBody2D.transform.DOScaleY(jumpScaleY, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
         myRigidBody2D.transform.DOScaleX(jumpScaleX, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+    }
+
+    public void DestroyMe()
+    {
+        Destroy(gameObject);
     }
 }
