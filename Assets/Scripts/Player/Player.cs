@@ -15,10 +15,13 @@ public class Player : MonoBehaviour
     [SerializeField, BoxGroup("Speed setup")] public float speed;
     [SerializeField, BoxGroup("Speed setup")] public float speedRun;
     [SerializeField, BoxGroup("Speed setup")] public float jumpForce = 25;
-    
-    [SerializeField, BoxGroup("Animation setup")] public float jumpScaleY = 1.5f;
-    [SerializeField, BoxGroup("Animation setup")] public float jumpScaleX = .7f;
-    [SerializeField, BoxGroup("Animation setup")] public float animationDuration = .3f;
+
+    //[SerializeField, BoxGroup("Animation setup")] public float jumpScaleY = 1.5f;
+    //[SerializeField, BoxGroup("Animation setup")] public float jumpScaleX = .7f;
+    //[SerializeField, BoxGroup("Animation setup")] public float animationDuration = .3f;
+    [SerializeField, BoxGroup("Animation setup")] public SOFloat soJumpScaleY;
+    [SerializeField, BoxGroup("Animation setup")] public SOFloat soJumpScaleX;
+    [SerializeField, BoxGroup("Animation setup")] public SOFloat soAnimationDuration;
     [SerializeField, BoxGroup("Animation setup")] public Ease ease = Ease.OutBack;
     [SerializeField, BoxGroup("Animation setup")] public float playerSwipeDuration = .1f;
 
@@ -113,8 +116,8 @@ public class Player : MonoBehaviour
 
     public void HandleScalejump()
     {
-        myRigidBody2D.transform.DOScaleY(jumpScaleY, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
-        myRigidBody2D.transform.DOScaleX(jumpScaleX, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        myRigidBody2D.transform.DOScaleY(soJumpScaleY.value, soAnimationDuration.value).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        myRigidBody2D.transform.DOScaleX(soJumpScaleX.value, soAnimationDuration.value).SetLoops(2, LoopType.Yoyo).SetEase(ease);
     }
 
     public void DestroyMe()
