@@ -7,6 +7,9 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SOPlayerSetup : ScriptableObject
 {
+    public Animator player;
+
+    public SOString soStringName;
     [SerializeField, BoxGroup("Speed setup")] public Vector2 friction = new Vector2(-.1f, 0);
     [SerializeField, BoxGroup("Speed setup")] public float speed;
     [SerializeField, BoxGroup("Speed setup")] public float speedRun;

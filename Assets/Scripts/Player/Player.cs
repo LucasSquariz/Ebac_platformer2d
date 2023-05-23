@@ -7,13 +7,14 @@ using NaughtyAttributes;
 public class Player : MonoBehaviour
 {    
     public Rigidbody2D myRigidBody2D;
-    public Animator animator;
+    //public Animator animator;
     public HealthBase health;
 
     public SOPlayerSetup sOPlayerSetup;
 
     [ShowNonSerializedField] private float _currentSpeed;
-    
+
+    private Animator _currentPlayer;
 
     private void Awake()
     {
@@ -21,12 +22,14 @@ public class Player : MonoBehaviour
         {
             health.OnKill += OnPlayerKill;
         }
+
+        _currentPlayer = Instantiate(sOPlayerSetup.player, transform);
     }
 
     private void OnPlayerKill()
     {
         health.OnKill -= OnPlayerKill;
-        animator.SetTrigger(sOPlayerSetup.triggerOnDeath);
+        _currentPlayer.SetTrigger(sOPlayerSetup.triggerOnDeath);
     }
     void Update()
     {
@@ -39,18 +42,18 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             _currentSpeed = sOPlayerSetup.speedRun;
-            animator.speed = 2;
+            _currentPlayer.speed = 2;
         }
         else
         {
             _currentSpeed = sOPlayerSetup.speed;
-            animator.speed = 1;
+            _currentPlayer.speed = 1;
         }        
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             //myRigidBody2D.MovePosition(myRigidBody2D.position - velocity * Time.deltaTime);
-            animator.SetBool(sOPlayerSetup.boolRun, true);
+            _currentPlayer.SetBool(sOPlayerSetup.boolRun, true);
             
             if(myRigidBody2D.transform.localScale.x != -1)
             {
@@ -62,7 +65,7 @@ public class Player : MonoBehaviour
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             // myRigidBody2D.MovePosition(myRigidBody2D.position + velocity * Time.deltaTime);
-            animator.SetBool(sOPlayerSetup.boolRun, true);
+            _currentPlayer.SetBool(sOPlayerSetup.boolRun, true);
 
             if (myRigidBody2D.transform.localScale.x != 1)
             {
@@ -74,7 +77,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            animator.SetBool(sOPlayerSetup.boolRun, false);
+            _currentPlayer.SetBool(sOPlayerSetup.boolRun, false);
         }
 
         if(myRigidBody2D.velocity.x > 0)

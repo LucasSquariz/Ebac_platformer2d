@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27ec329655c648e418731203094fde68, type: 3}
-  m_Name: SO_player01
+  m_Name: SO_player02
   m_EditorClassIdentifier: 
   player: {fileID: 6413013834153556191, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
-  soStringName: {fileID: 11400000, guid: 90b5b3b3a8584d14c89a74bb0d0bf7af, type: 2}
+  soStringName: {fileID: 11400000, guid: 90703102b31ea3d4489c7fe32fc77c17, type: 2}
   friction: {x: -0.3, y: 0}
   speed: 21
   speedRun: 21
