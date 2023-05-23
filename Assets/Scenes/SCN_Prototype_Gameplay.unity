@@ -4806,18 +4806,7 @@ MonoBehaviour:
   myRigidBody2D: {fileID: 1930514470}
   animator: {fileID: 1766097506}
   health: {fileID: 1930514474}
-  friction: {x: -0.1, y: 0}
-  speed: 10
-  speedRun: 21
-  jumpForce: 25
-  soJumpScaleY: {fileID: 11400000, guid: e7addfc39fda47d4d8f5f5bcb9108a87, type: 2}
-  soJumpScaleX: {fileID: 11400000, guid: 189fe254efea0ba40a32af6932b80072, type: 2}
-  soAnimationDuration: {fileID: 11400000, guid: 2efe7ebf5fe11e642a2354566086b018, type: 2}
-  jumpScaleY: 1.1
-  jumpScaleX: 0.7
-  animationDuration: 0.1
-  ease: 27
-  playerSwipeDuration: 0.1
+  sOPlayerSetup: {fileID: 11400000, guid: 5e89102a6b07c9946a0568de3df5d93b, type: 2}
 --- !u!50 &1930514470
 Rigidbody2D:
   serializedVersion: 4
