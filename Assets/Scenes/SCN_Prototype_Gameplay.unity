@@ -349,6 +349,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1880940482}
     m_Modifications:
+    - target: {fileID: 1950512531829159618, guid: 6e82c4ff8ce87f049b0b60c79eb6a25f, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2106697195299592368, guid: 6e82c4ff8ce87f049b0b60c79eb6a25f, type: 3}
       propertyPath: m_Name
       value: PFB_Coin (2)
@@ -663,6 +667,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1880940482}
     m_Modifications:
+    - target: {fileID: 1950512531829159618, guid: 6e82c4ff8ce87f049b0b60c79eb6a25f, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2106697195299592368, guid: 6e82c4ff8ce87f049b0b60c79eb6a25f, type: 3}
       propertyPath: m_Name
       value: PFB_Coin (1)
@@ -897,6 +905,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1880940482}
     m_Modifications:
+    - target: {fileID: 1950512531829159618, guid: 6e82c4ff8ce87f049b0b60c79eb6a25f, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2106697195299592368, guid: 6e82c4ff8ce87f049b0b60c79eb6a25f, type: 3}
       propertyPath: m_Name
       value: PFB_Coin (3)
@@ -1085,6 +1097,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1880940482}
     m_Modifications:
+    - target: {fileID: 1950512531829159618, guid: 6e82c4ff8ce87f049b0b60c79eb6a25f, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2106697195299592368, guid: 6e82c4ff8ce87f049b0b60c79eb6a25f, type: 3}
       propertyPath: m_Name
       value: PFB_Coin (4)
@@ -3877,6 +3893,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1880940482}
     m_Modifications:
+    - target: {fileID: 1950512531829159618, guid: 6e82c4ff8ce87f049b0b60c79eb6a25f, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2106697195299592368, guid: 6e82c4ff8ce87f049b0b60c79eb6a25f, type: 3}
       propertyPath: m_Name
       value: PFB_Coin (5)
@@ -5795,6 +5815,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1880940482}
     m_Modifications:
+    - target: {fileID: 1950512531829159618, guid: 6e82c4ff8ce87f049b0b60c79eb6a25f, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2106697195299592368, guid: 6e82c4ff8ce87f049b0b60c79eb6a25f, type: 3}
       propertyPath: m_Name
       value: PFB_Coin
