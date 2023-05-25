@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compareTag: Player
-  particleSystem: {fileID: 1950512531829159618}
+  itemParticleSystem: {fileID: 1950512531829159618}
 --- !u!58 &4969189969063976632
 CircleCollider2D:
   m_ObjectHideFlags: 0

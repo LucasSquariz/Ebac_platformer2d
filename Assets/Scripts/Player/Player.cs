@@ -5,7 +5,7 @@ using DG.Tweening;
 using NaughtyAttributes;
 
 public class Player : MonoBehaviour
-{    
+{
     public Rigidbody2D myRigidBody2D;
     //public Animator animator;
     public HealthBase health;
@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     [ShowNonSerializedField] private float _currentSpeed;
 
     private Animator _currentPlayer;
-    
+
 
     [SerializeField, BoxGroup("Jump collision setup")] public Collider2D playerCollider;
     [SerializeField, BoxGroup("Jump collision setup")] public ParticleSystem jumpVFX;
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        if(health != null)
+        if (health != null)
         {
             health.OnKill += OnPlayerKill;
         }
@@ -39,7 +39,6 @@ public class Player : MonoBehaviour
 
     private bool IsGrounded()
     {
-        Debug.DrawRay(transform.position, -Vector2.up, Color.magenta, distanceToGround + spaceToGround);
         return Physics2D.Raycast(transform.position, -Vector2.up, distanceToGround + spaceToGround);
     }
 
@@ -49,8 +48,8 @@ public class Player : MonoBehaviour
         _currentPlayer.SetTrigger(sOPlayerSetup.triggerOnDeath);
     }
     void Update()
-    {        
-        IsGrounded();        
+    {
+        IsGrounded();
         HandleJump();
         HandleMovement();
     }
@@ -66,14 +65,14 @@ public class Player : MonoBehaviour
         {
             _currentSpeed = sOPlayerSetup.speed;
             _currentPlayer.speed = 1;
-        }        
+        }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             //myRigidBody2D.MovePosition(myRigidBody2D.position - velocity * Time.deltaTime);
             _currentPlayer.SetBool(sOPlayerSetup.boolRun, true);
-            
-            if(myRigidBody2D.transform.localScale.x != -1)
+
+            if (myRigidBody2D.transform.localScale.x != -1)
             {
                 myRigidBody2D.transform.DOScaleX(-1, sOPlayerSetup.playerSwipeDuration);
             }
@@ -98,10 +97,11 @@ public class Player : MonoBehaviour
             _currentPlayer.SetBool(sOPlayerSetup.boolRun, false);
         }
 
-        if(myRigidBody2D.velocity.x > 0)
+        if (myRigidBody2D.velocity.x > 0)
         {
             myRigidBody2D.velocity += sOPlayerSetup.friction;
-        } else if (myRigidBody2D.velocity.x < 0)
+        }
+        else if (myRigidBody2D.velocity.x < 0)
         {
             myRigidBody2D.velocity -= sOPlayerSetup.friction;
         }
@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
 
     public void HandleJump()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             myRigidBody2D.velocity = Vector2.up * sOPlayerSetup.jumpForce;
             myRigidBody2D.transform.localScale = Vector2.one;
@@ -123,10 +123,7 @@ public class Player : MonoBehaviour
 
     private void PlayJumpVFX()
     {
-        if(jumpVFX != null)
-        {
-            jumpVFX.Play();
-        }
+        VFXManager.Instance.PlayVFXByType(VFXManager.VFXType.JUMP, transform.position);
     }
 
     public void HandleScalejump()
