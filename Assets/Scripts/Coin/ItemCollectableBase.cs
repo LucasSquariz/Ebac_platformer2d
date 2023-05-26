@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,10 @@ public class ItemCollectableBase : MonoBehaviour
 {
     public string compareTag = "Player";
     public ParticleSystem itemParticleSystem;
+    public float timeToHide = .1f;
+    public GameObject graphicItem;
+
+    [SerializeField, BoxGroup("Audio setup")] public AudioSource audioSource;
 
     private void Awake()
     {
@@ -22,8 +27,14 @@ public class ItemCollectableBase : MonoBehaviour
         }
     }
     protected virtual void Collect() { 
-        gameObject.SetActive(false);
+        if (graphicItem != null) graphicItem.SetActive(false);
+        Invoke("HideObject", timeToHide);        
         OnCollect();
+    }
+
+    public void HideObject()
+    {
+        gameObject.SetActive(false);
     }
 
     protected virtual void OnCollect() 
@@ -31,6 +42,10 @@ public class ItemCollectableBase : MonoBehaviour
         if(itemParticleSystem != null)
         {
             itemParticleSystem.Play();
+        }
+        if(audioSource != null)
+        {
+            audioSource.Play();
         }
     }
 }
