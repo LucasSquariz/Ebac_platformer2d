@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!245 &-5345214014058054689
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Menu
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: c614fde76f1ecad4996bcd6cdb3cc96b
+  m_FloatValues:
+    8f24927ec18657f4c819815fc108d8ca: -0
+    e91b997f1694c18418efe5e1b6a4b0e6: 0.5
+  m_TransitionOverrides: {}
 --- !u!244 &-4201521797002779761
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -25,11 +38,16 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
+  - {fileID: -5345214014058054689}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 8f24927ec18657f4c819815fc108d8ca
+    name: VolumeAmbience
+  - guid: f3e89851bdb679e448d75ec94c4dc558
+    name: VolumeSFX
   m_AudioMixerGroupViews:
   - guids:
     - 5566689d66b69884ba0e8aae6c02637d
@@ -79,10 +97,11 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snapshot
+  m_Name: InGame
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 98c5a71380025ea4fa8d6f07efcfe314
-  m_FloatValues: {}
+  m_FloatValues:
+    e91b997f1694c18418efe5e1b6a4b0e6: 1
   m_TransitionOverrides: {}
 --- !u!244 &4664459173749918694
 AudioMixerEffectController:
