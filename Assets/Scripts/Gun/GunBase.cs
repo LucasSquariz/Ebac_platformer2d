@@ -7,14 +7,20 @@ public class GunBase : MonoBehaviour
     public Transform prefabProjectile;
 
     public Transform positionToShoot;
-    public Transform projectileParent;
+    internal Transform projectileParent;
     public float timeBetweenShoot = .05f;
     public Transform playerSideReference;
 
     private Coroutine _currentCorrotine;
+    public AudioRandomPlayAudioClips randomShoots;
 
-    private void Update()
+    private void Awake()
     {
+        playerSideReference = GameObject.FindObjectOfType<Player>().transform;
+        
+    }
+    private void Update()
+    {        
         if (Input.GetKeyDown(KeyCode.A))
         {
             _currentCorrotine = StartCoroutine(StartShoot());
@@ -39,6 +45,10 @@ public class GunBase : MonoBehaviour
 
     public void Shoot()
     {
+        if(randomShoots != null)
+        {
+            randomShoots.PlayRandom();
+        }
         var projectile = Instantiate(prefabProjectile, projectileParent);
         projectile.transform.position = positionToShoot.position;
         projectile.GetComponentInChildren<ProjectileBase>().side = playerSideReference.transform.localScale.x;

@@ -53,6 +53,7 @@ MonoBehaviour:
   timeToHide: 0.8
   graphicItem: {fileID: 5860290524995927310}
   audioSource: {fileID: 541612702446205598}
+  coinCollider: {fileID: 4969189969063976632}
 --- !u!58 &4969189969063976632
 CircleCollider2D:
   m_ObjectHideFlags: 0

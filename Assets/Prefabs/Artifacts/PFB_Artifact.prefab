@@ -131,6 +131,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compareTag: Player
+  itemParticleSystem: {fileID: 0}
+  timeToHide: 0.1
+  graphicItem: {fileID: 5576387620996911333}
+  audioSource: {fileID: 0}
+  artifactCollider: {fileID: 9056594260506038532}
 --- !u!61 &9056594260506038532
 BoxCollider2D:
   m_ObjectHideFlags: 0

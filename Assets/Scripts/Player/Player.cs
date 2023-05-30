@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     [ShowNonSerializedField] private float _currentSpeed;
 
     private Animator _currentPlayer;
-
+    [SerializeField, BoxGroup("Bullet setup")] public Transform bulletAnchor;
 
     [SerializeField, BoxGroup("Jump collision setup")] public Collider2D playerCollider;
     [SerializeField, BoxGroup("Jump collision setup")] public ParticleSystem jumpVFX;
@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
         }
 
         _currentPlayer = Instantiate(sOPlayerSetup.player, transform);
+        _currentPlayer.GetComponentInChildren<PlayerDestroyHelper>().player = this;
+        _currentPlayer.GetComponentInChildren<GunBase>().projectileParent = bulletAnchor;
 
         //if(playerCollider != null)
         //{
@@ -46,6 +48,7 @@ public class Player : MonoBehaviour
     {
         health.OnKill -= OnPlayerKill;
         _currentPlayer.SetTrigger(sOPlayerSetup.triggerOnDeath);
+        //destroyMe será chamado no final da animação
     }
     void Update()
     {
@@ -132,7 +135,7 @@ public class Player : MonoBehaviour
         myRigidBody2D.transform.DOScaleX(sOPlayerSetup.jumpScaleX, sOPlayerSetup.animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(sOPlayerSetup.ease);
     }
 
-    public void DestroyMe()
+    public void DestroyPlayer()
     {
         Destroy(gameObject);
     }
